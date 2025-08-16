@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #1e3d73;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin-bottom: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        ul {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        .work-box {
+            background-color: #e6f8fc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        form {
+            background-color: white;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        form label {
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+        }
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        form input[type="radio"],
+        form input[type="checkbox"] {
+            width: auto;
+            margin-right: 5px;
+        }
+        form div {
+            margin-bottom: 10px;
+        }
+        form button {
+            background-color: #ddd;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #1e3d73;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>My Portfolio</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME SECTION -->
+<section id="home">
+    <h2>Welcome!</h2>
+    <p>This is the personal portfolio of a web developer showcasing projects and contact information.</p>
+    <ul>
+        <li>Web Development</li>
+        <li style="color:red;">UI/UX Design</li>
+        <li>SEO Optimization</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Skills Overview</h2>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Skills</th>
+        </tr>
+        <tr>
+            <td>Frontend</td>
+            <td>HTML<br>CSS<br>JavaScript</td>
+        </tr>
+        <tr>
+            <td>Backend</td>
+            <td>Node.js, Express</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Work Showcase</h2>
+    <div class="work-box">Project 1<br>A weather app using OpenWeatherMap API.</div>
+    <div class="work-box">Project 2<br>A task tracker built with JavaScript and localStorage.</div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="projects">
+    <h2>Favorite Travel Spot</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png" alt="World Map" width="100%">
+</section>
+
+<section>
+    <h2>Project List</h2>
+    <ol>
+        <li>Portfolio Website
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+            </ul>
+        </li>
+        <li>Blog Platform</li>
+        <li>Photo Gallery</li>
+    </ol>
+</section>
+
+<section>
+    <h2>My Location</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60472.28133126983!2d72.774776!3d19.0821977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63d3b8a1ab1%3A0x4b6c0b9ee2a4f7c1!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1688986498243!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+
+        <label>Gender:</label>
+        <div>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+        </div>
+
+        <label>Skills:</label>
+        <div>
+            <input type="checkbox" id="html" value="HTML">
+            <label for="html">HTML</label>
+            <input type="checkbox" id="css" value="CSS">
+            <label for="css">CSS</label>
+            <input type="checkbox" id="js" value="JavaScript">
+            <label for="js">JavaScript</label>
+        </div>
+
+        <label for="looking">Looking for:</label>
+        <select id="looking">
+            <option>Internship</option>
+            <option>Job</option>
+            <option>Freelance</option>
+        </select>
+
+        <label for="message">Message:</label>
+        <textarea id="message" rows="4" placeholder="Write your message here..."></textarea>
+
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 My Portfolio</p>
+</footer>
+
+</body>
+</html>

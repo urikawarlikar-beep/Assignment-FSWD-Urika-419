@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test Page</title>
+</head>
+<body>
+<h1>Hello! The CMS is working.</h1>
+<script>
+alert("JavaScript is running!");
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mini Blog CMS</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+    }
+    h1 {
+        text-align: center;
+    }
+    form {
+        max-width: 500px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    input, textarea, select, button {
+        padding: 8px;
+        font-size: 14px;
+    }
+    .controls {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin: 15px 0;
+    }
+    .post {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .tags {
+        font-size: 0.9em;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+
+<h1>Mini Blog CMS</h1>
+
+<form id="postForm">
+    <input type="text" id="title" placeholder="Post Title" required>
+    <textarea id="content" placeholder="Post Content" required></textarea>
+    <input type="text" id="tags" placeholder="Tags (comma separated)">
+    <button type="submit">Add Post</button>
+</form>
+
+<div class="controls">
+    <label>Sort by:
+        <select id="sortOption">
+            <option value="date">Date</option>
+            <option value="title">Title</option>
+        </select>
+    </label>
+    <input type="text" id="filterTag" placeholder="Filter by tag">
+    <button id="applyFilter">Apply Filter</button>
+</div>
+
+<div id="posts"></div>
+
+<script>
+let posts = [];
+
+document.getElementById('postForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const title = document.getElementById('title').value.trim();
+    const content = document.getElementById('content').value.trim();
+    const tags = document.getElementById('tags').value.split(',').map(t => t.trim()).filter(t => t);
+    const date = new Date();
+
+    posts.push({ title, content, tags, date });
+    document.getElementById('postForm').reset();
+    renderPosts();
+});
+
+document.getElementById('sortOption').addEventListener('change', renderPosts);
+document.getElementById('applyFilter').addEventListener('click', renderPosts);
+
+function renderPosts() {
+    const sortBy = document.getElementById('sortOption').value;
+    const filterTag = document.getElementById('filterTag').value.trim().toLowerCase();
+    let displayPosts = [...posts];
+
+    if (filterTag) {
+        displayPosts = displayPosts.filter(post =>
+            post.tags.some(tag => tag.toLowerCase().includes(filterTag))
+        );
+    }
+
+    if (sortBy === 'title') {
+        displayPosts.sort((a, b) => a.title.localeCompare(b.title));
+    } else {
+        displayPosts.sort((a, b) => b.date - a.date);
+    }
+
+    const postsContainer = document.getElementById('posts');
+    postsContainer.innerHTML = '';
+    displayPosts.forEach(post => {
+        const postEl = document.createElement('div');
+        postEl.classList.add('post');
+        postEl.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>${post.content}</p>
+            <div class="tags"><strong>Tags:</strong> ${post.tags.join(', ') || 'None'}</div>
+            <small><em>Posted on ${post.date.toLocaleString()}</em></small>
+        `;
+        postsContainer.appendChild(postEl);
+    });
+}
+</script>
+
+</body>
+</html>
